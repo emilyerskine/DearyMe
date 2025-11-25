@@ -1,6 +1,6 @@
 {
-  "name": "My Diary PWA",
-  "short_name": "Diary",
+  "name": "DearyMe Assigment",
+  "short_name": "DearyMe",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",

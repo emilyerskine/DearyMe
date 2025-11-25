@@ -3,6 +3,7 @@ body {
   max-width: 600px;
   margin: auto;
   padding: 20px;
+  background: #efd9ce; 
 }
 
 textarea {
@@ -26,4 +27,21 @@ li {
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 5px;
+}
+
+.moodboard {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.moodboard button { 
+  background: #b79ced; 
+  border-radius: 12px;
+  padding: 12px;
+  border: none;
+}
+
+.moodboard button.selected {
+  background: #957fef;
 }
