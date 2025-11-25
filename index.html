@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Diary</title>
+  <title>DearyMe</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <h1>My Diary</h1>
+  <h1>DearyMe</h1>
 
   <div id="moodSelector" class="moodboard">
-    <button data-value="Great">😃<div>Great</div></button>
-    <button data-value="Good">😊<div>Good</div></button>
-    <button data-value="Okay">😐<div>Okay</div></button>
-    <button data-value="Down">😔<div>Down</div></button>
-    <button data-value="Sad">😢<div>Sad</div></button>
+    <button data-value="Great">😃</button>
+    <button data-value="Good">😊</button>
+    <button data-value="Okay">😐</button>
+    <button data-value="Down">😔</button>
+    <button data-value="Sad">😢</button>
+  </div>
+
+  <div class="multi" id="symptomsMulti">
+    <div class="multi-display">Select symptoms</div>
+    <div class="multi-options hidden"></div>
   </div>
 
   <textarea id="entry" placeholder="Write your thoughts..."></textarea>

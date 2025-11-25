@@ -45,3 +45,18 @@ li {
 .moodboard button.selected {
   background: #957fef;
 }
+
+.multi-options div {
+  padding: 8px; 
+  background:#b79ced;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+.multi-options div:hover {
+  background: #957fef;
+}
+
+.hidden {
+  display: none;
+}
