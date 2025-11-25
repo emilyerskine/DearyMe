@@ -12,8 +12,13 @@ const entriesList = document.getElementById("entriesList");
 //for symptoms
 const symptoms = ["Stress", "Anxiety", "Low Mood", "Fatigue",]
 const symptomSelected = [];
-const display = document.querySelector("#symptomsMulti .multi-display");
-const options = document.querySelector("#symptomsMulti .multi-options");
+const symDisplay = document.querySelector("#symptomsMulti .multi-display");
+const symOptions = document.querySelector("#symptomsMulti .multi-options");
+//for behaviours
+const behaviours = ["Busy Workload", "Poor Sleep", "High Screentime", "Caffeine",]
+const behaviourSelected = [];
+const behDisplay = document.querySelector("#behavioursMulti .multi-display");
+const behOptions = document.querySelector("#behavioursMulti .multi-options");
 
 // track mood
 let selectedMood = null;
@@ -31,7 +36,8 @@ saveBtn.addEventListener("click", () => {
     text,
     timestamp: new Date().toLocaleString(),
     mood: selectedMood || "No Mood Logged",
-    symptoms: [...symptomSelected] || "No Symptoms Logged",
+    symptoms: [...symptomSelected] ,
+    behaviours: [...behaviourSelected] ,
   };
 
   entries.unshift(newEntry);
@@ -45,7 +51,7 @@ function renderEntries() {
   entriesList.innerHTML = "";
   entries.forEach((e) => {
     const li = document.createElement("li");
-    li.textContent = `${e.timestamp} — ${e.mood} — [${e.symptoms.join(", ")}] — ${e.text} `;
+    li.textContent = `${e.timestamp} — ${e.mood} — [${e.symptoms.join(", ")}] — [${e.behaviours.join(", ")}] —  ${e.text} `;
     entriesList.appendChild(li);
   });
 }
@@ -65,13 +71,13 @@ function updateMoodUI() {
 }
 
 //add symptoms drop down
-display.addEventListener("click", () => options.classList.toggle("hidden"));
+symDisplay.addEventListener("click", () => symOptions.classList.toggle("hidden"));
 
 symptoms.forEach(sym => {
   const div = document.createElement("div");
   div.textContent = sym;
   div.addEventListener("click", () => toggleSymptom(sym));
-  options.appendChild(div);
+  symOptions.appendChild(div);
 });
 
 function toggleSymptom(sym) {
@@ -84,7 +90,32 @@ function toggleSymptom(sym) {
 }
 
 function updateSymptomsUI() {
-  display.textContent  = symptomSelected.length
+  symDisplay.textContent  = symptomSelected.length
   ? symptomSelected.join(", ")
   : "Select symptoms";
+}
+
+//add behaviours drop down
+behDisplay.addEventListener("click", () => behOptions.classList.toggle("hidden"));
+
+behaviours.forEach(beh => {
+  const div = document.createElement("div");
+  div.textContent = beh;
+  div.addEventListener("click", () => toggleBehaviour(beh));
+  behOptions.appendChild(div);
+});
+
+function toggleBehaviour(beh) {
+  if (behaviourSelected.includes(beh)) {
+    behaviourSelected.splice(behaviourSelected.indexOf(beh), 1);
+  } else {
+    behaviourSelected.push(beh);
+  }
+  updateBehaviourUI();
+}
+
+function updateBehaviourUI() {
+  behDisplay.textContent  = behaviourSelected.length
+  ? behaviourSelected.join(", ")
+  : "Select behaviours";
 }
