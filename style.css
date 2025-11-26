@@ -1,10 +1,9 @@
 body {
   font-family: 'Roboto';
-  background-color: #f4f4f9;
+  background-color: #efd9ce;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100vh;
 }
 
 #content {
@@ -22,14 +21,17 @@ body {
 
 h1 {
   font-size: 24px;
-  text-align: center;
-  color: #333;
+  text-align: center;  
+  font-family: 'Roboto';
+  color: #7161ef;
 }
 
 h2 {
   font-size: 20px;
-  color: #333;
+  color: #7161ef;
   margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Roboto';
 }
 
 .moodboard {
@@ -45,8 +47,6 @@ h2 {
   border: none;
   border-radius: 50%;
   color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .moodboard button:hover {
@@ -62,82 +62,79 @@ textarea {
   padding: 15px;
   font-size: 16px;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #b79ced;
   margin-bottom: 20px;
   box-sizing: border-box;
   resize: none;
+  background-color: #efd9ce;
+  font-family: 'Roboto';
 }
 
 button {
   padding: 15px 20px;
   border: none;
-  background-color: #957fef;
-  color: white;
+  background-color: #b79ced;
+  color: #efd9ce;
   font-size: 16px;
   border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-family: 'Roboto';
 }
 
-button:hover {
-  background-color: #8c68e1;
-}
 
 ul {
   list-style: none;
   padding: 0;
+  font-family: 'Roboto';
 }
 
 li {
-  background: #fff;
+  background: #efd9ce;
   padding: 12px;
   margin: 10px 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto';
+  color: #efd9ce;
 }
 
 #bottomNav {
   position: fixed;
   bottom: 0;
+  font-family: 'Roboto';
   width: 100%;
-  background-color: #ffffff;
+  background-color: #957fef;
   display: flex;
   justify-content: space-around;
-  padding: 10px 0;
-  border-top: 2px solid #ccc;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-top: 2px solid #efd9ce;
 }
 
 .nav-btn {
-  padding: 10px;
+  padding: 20px;
   font-size: 16px;
-  background-color: #957fef;
-  color: white;
+  background-color: #b79ced;
+  color: #efd9ce;
   border: none;
   border-radius: 12px;
-  width: 80px;
+  width: auto;
   text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.nav-btn:hover {
-  background-color: #8c68e1;
+  font-family: 'Roboto';
 }
 
 .nav-btn.selected {
-  background-color: #8c68e1;
+  background-color: #dec0f1;
 }
 
 .setting-item {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
+  font-family: 'Roboto';
 }
 
 .setting-item label {
   font-size: 16px;
   margin-right: 10px;
+  font-family: 'Roboto';
 }
 
 input[type="checkbox"] {
@@ -155,8 +152,8 @@ input[type="time"] {
   display: none;
 }
 
-body.dark-mode {
-  background-color: #333;
+body.dark-mode, body.dark-mode .setting-item, body.dark-mode #settingsSection {
+  background-color: grey;
   color: white;
 }
 
@@ -165,6 +162,101 @@ body.dark-mode input[type="checkbox"] {
   color: black;
 }
 
+body.dark-mode .nav-btn.selected {
+  background-color: grey;
+}
+
+body.dark-mode h1, body.dark-mode h2 {
+  color: black;
+}
+
+body.dark-mode #bottomNav {
+  background-color: black;
+}
+
+body.dark-mode textarea, body.dark-mode button, body.dark-mode .multi-display {
+  background-color: darkgrey;
+  color: white;
+  border-color: grey;
+}
+
+
 body.dark-mode h2, body.dark-mode label {
   color: white;
+}
+
+.multi {
+  margin-bottom: 20px;
+}
+
+.multi-display {
+  padding: 20px;
+  font-size: 16px;
+  background-color: #b79ced;
+  border: 2px solid #957fef;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.multi-options {
+  border: 2px solid #957fef;
+  border-radius: 12px;
+  background-color: #b79ced;
+  font-family: 'Roboto';
+}
+
+.multi-display.selected {
+  background-color: #dec0f1;
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    width: auto; 
+    padding: 12px 0; 
+    font-size: 14px;
+  }
+
+  #bottomNav {
+    padding: 10px;
+    flex-direction: row; 
+  }
+
+  #settingsSection {
+    padding: 10px;
+  }
+
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  input[type="time"] {
+    width: 80%;
+  }
+}
+
+#settingsSection {
+  background-color: #efd9ce;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.setting-item label {
+  font-size: 16px;
+  color: #7161ef;
+  margin-right: 10px;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #b79ced;
 }
