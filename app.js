@@ -22,11 +22,11 @@ const behOptions = document.querySelector("#behavioursMulti .multi-options");
 // section selectors
 const journalingSection = document.getElementById("journalingSection");
 const settingsSection = document.getElementById("settingsSection");
-const accountSection = document.getElementById("accountSection");
+const memorySection = document.getElementById("memorySection");
 // nav buttons
 const journalingNav = document.getElementById("journalingNav");
 const settingsNav = document.getElementById("settingsNav");
-const accountNav = document.getElementById("accountNav");
+const memsNav = document.getElementById("memsNav");
 // settings stuff
 const darkModeToggle = document.getElementById("darkModeToggle");
 const remindersToggle = document.getElementById("remindersToggle");
@@ -138,7 +138,7 @@ function showSection(section) {
   // Hide all sections
   journalingSection.classList.remove("active");
   settingsSection.classList.remove("active");
-  accountSection.classList.remove("active");
+  memorySection.classList.remove("active");
 
   // Show the selected section
   section.classList.add("active");
@@ -155,14 +155,14 @@ settingsNav.addEventListener("click", () => {
   highlightActiveNav(settingsNav);
 });
 
-accountNav.addEventListener("click", () => {
-  showSection(accountSection);
-  highlightActiveNav(accountNav);
+memsNav.addEventListener("click", () => {
+  showSection(memorySection);
+  highlightActiveNav(memsNav);
 });
 
 // Highlight active nav button
 function highlightActiveNav(activeButton) {
-  const buttons = [journalingNav, settingsNav, accountNav];
+  const buttons = [journalingNav, settingsNav, memsNav];
   buttons.forEach(button => button.classList.remove("selected"));
   activeButton.classList.add("selected");
 }
