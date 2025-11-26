@@ -9,7 +9,8 @@
 </head>
 <body>
   <h1>DearyMe</h1>
-
+<div id="step1" class="step">
+  <h2>How are you feeling?</h2>
   <div id="moodSelector" class="moodboard">
     <button data-value="Great">😃</button>
     <button data-value="Good">😊</button>
@@ -17,19 +18,33 @@
     <button data-value="Down">😔</button>
     <button data-value="Sad">😢</button>
   </div>
+  <button id="next1">Next</button>
+</div>
 
+<div id="step2" class="step">
+  <h2>Any symptoms you want to log?</h2>
   <div class="multi" id="symptomsMulti">
     <div class="multi-display">Select symptoms</div>
     <div class="multi-options hidden"></div>
   </div>
+  <button id="next2">Next</button>
+  <button id="back1">Back</button>
+</div>
 
+<div id="step3" class="step">
+  <h2>Any recent behaviours you want to log?</h2>
   <div class="multi" id="behavioursMulti">
     <div class="multi-display">Select behaviours</div>
     <div class="multi-options hidden"></div>
   </div>
+  <button id="next3">Next</button>
+  <button id="back2">Back</button>
+</div>
 
+<div id="step4" class="step">
   <textarea id="entry" placeholder="Write your thoughts..."></textarea>
   <button id="saveBtn">Save Entry</button>
+</div>
 
   <h2>Previous Entries</h2>
   <ul id="entriesList"></ul>

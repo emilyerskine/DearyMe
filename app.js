@@ -20,6 +20,9 @@ const behaviourSelected = [];
 const behDisplay = document.querySelector("#behavioursMulti .multi-display");
 const behOptions = document.querySelector("#behavioursMulti .multi-options");
 
+// make step by step
+let currentStep = 1;
+
 // track mood
 let selectedMood = null;
 
@@ -119,3 +122,48 @@ function updateBehaviourUI() {
   ? behaviourSelected.join(", ")
   : "Select behaviours";
 }
+
+//make the step by step process happen
+function showStep(step) {
+  document.querySelectorAll(".step").forEach(s => {
+    s.classList.add("hidden");
+  });
+  document.querySelector("#step" + step).classList.remove("hidden");
+}
+
+//move to next step
+function moveToNext() {
+  if (currentStep < 4) {
+    currentStep++;
+    showStep(currentStep)
+  }
+}
+
+//start with step 1
+showStep(1);
+
+document.getElementById("next1").addEventListener("click", () => {
+  if (selectedMood) {
+    moveToNext();
+  } else {
+    alert("Please select a mood")
+  }
+});
+
+//next button for 2 
+document.getElementById("next2").addEventListener("click", () => {
+  if (symptomSelected.length > 0) {
+    moveToNext();
+  } else {
+    alert("Please select atleast one symptom")
+  }
+});
+
+//next button for 3
+document.getElementById("next3").addEventListener("click", () => {
+  if (behaviourSelected.length > 0) {
+    moveToNext();
+  } else {
+    alert("Please select atleast one behaviour")
+  }
+});
