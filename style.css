@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   background-color: #f4f4f9;
   margin: 0;
   padding: 0;
@@ -7,13 +7,11 @@ body {
   height: 100vh;
 }
 
-/* Main content area */
 #content {
   padding: 20px;
   overflow-y: auto;
 }
 
-/* Section styles */
 .section {
   display: none;
 }
@@ -34,7 +32,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Moodboard buttons */
 .moodboard {
   display: flex;
   justify-content: space-around;
@@ -60,7 +57,6 @@ h2 {
   background-color: #8c68e1;
 }
 
-/* Textarea and Buttons */
 textarea {
   width: 100%;
   padding: 15px;
@@ -87,7 +83,6 @@ button:hover {
   background-color: #8c68e1;
 }
 
-/* Previous Entries */
 ul {
   list-style: none;
   padding: 0;
@@ -101,7 +96,6 @@ li {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Bottom Navigation Bar */
 #bottomNav {
   position: fixed;
   bottom: 0;
@@ -135,18 +129,42 @@ li {
   background-color: #8c68e1;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-  .moodboard {
-    flex-direction: column;
-    align-items: center;
-  }
+.setting-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
 
-  .moodboard button {
-    margin: 5px;
-  }
+.setting-item label {
+  font-size: 16px;
+  margin-right: 10px;
+}
 
-  button {
-    width: 100%;
-  }
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+input[type="time"] {
+  padding: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+body.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+body.dark-mode input[type="checkbox"] {
+  background-color: white;
+  color: black;
+}
+
+body.dark-mode h2, body.dark-mode label {
+  color: white;
 }

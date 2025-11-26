@@ -19,18 +19,19 @@ const behaviours = ["Busy Workload", "Poor Sleep", "High Screentime", "Caffeine"
 const behaviourSelected = [];
 const behDisplay = document.querySelector("#behavioursMulti .multi-display");
 const behOptions = document.querySelector("#behavioursMulti .multi-options");
-// Section selectors
+// section selectors
 const journalingSection = document.getElementById("journalingSection");
 const settingsSection = document.getElementById("settingsSection");
 const accountSection = document.getElementById("accountSection");
-// Nav buttons
+// nav buttons
 const journalingNav = document.getElementById("journalingNav");
 const settingsNav = document.getElementById("settingsNav");
 const accountNav = document.getElementById("accountNav");
-
-
-// make step by step
-let currentStep = 1;
+// settings stuff
+const darkModeToggle = document.getElementById("darkModeToggle");
+const remindersToggle = document.getElementById("remindersToggle");
+const reminderTimeSection = document.getElementById("reminder-time-section");
+const reminderTimeInput = document.getElementById("reminder-time");
 
 // track mood
 let selectedMood = null;
@@ -132,51 +133,6 @@ function updateBehaviourUI() {
   : "Select behaviours";
 }
 
-//make the step by step process happen
-function showStep(step) {
-  document.querySelectorAll(".step").forEach(s => {
-    s.classList.add("hidden");
-  });
-  document.querySelector("#step" + step).classList.remove("hidden");
-}
-
-//move to next step
-function moveToNext() {
-  if (currentStep < 4) {
-    currentStep++;
-    showStep(currentStep)
-  }
-}
-
-//start with step 1
-showStep(1);
-
-document.getElementById("next1").addEventListener("click", () => {
-  if (selectedMood) {
-    moveToNext();
-  } else {
-    alert("Please select a mood")
-  }
-});
-
-//next button for 2 
-document.getElementById("next2").addEventListener("click", () => {
-  if (symptomSelected.length > 0) {
-    moveToNext();
-  } else {
-    alert("Please select atleast one symptom")
-  }
-});
-
-//next button for 3
-document.getElementById("next3").addEventListener("click", () => {
-  if (behaviourSelected.length > 0) {
-    moveToNext();
-  } else {
-    alert("Please select atleast one behaviour")
-  }
-});
-
 // Show a specific section
 function showSection(section) {
   // Hide all sections
@@ -214,3 +170,29 @@ function highlightActiveNav(activeButton) {
 // Start with the journaling section
 showSection(journalingSection);
 highlightActiveNav(journalingNav);
+
+//toggle darkmode
+darkModeToggle.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    //dark mode on
+    document.body.classList.add("dark-mode"); 
+  } else {
+    //dark mode off
+    document.body.classList.remove("dark-mode"); 
+  }
+});
+
+// toggle reminders
+remindersToggle.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    reminderTimeSection.classList.remove("hidden"); 
+  } else {
+    reminderTimeSection.classList.add("hidden"); 
+  }
+});
+
+// add api for push notifs later 
+reminderTimeInput.addEventListener("change", (e) => {
+  const reminderTime = e.target.value;
+  console.log("Reminder set to:", reminderTime); 
+});

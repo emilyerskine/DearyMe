@@ -8,9 +8,7 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <!-- Main Content -->
   <div id="content">
-    <!-- Journaling Section -->
     <div id="journalingSection" class="section active">
       <h1>DearyMe - Journaling</h1>
       
@@ -23,7 +21,6 @@
           <button data-value="Down">😔</button>
           <button data-value="Sad">😢</button>
         </div>
-        <button id="next1" class="next-btn">Next</button>
       </div>
 
       <div id="step2" class="step">
@@ -32,8 +29,6 @@
           <div class="multi-display">Select symptoms</div>
           <div class="multi-options hidden"></div>
         </div>
-        <button id="next2" class="next-btn">Next</button>
-        <button id="back1" class="back-btn">Back</button>
       </div>
 
       <div id="step3" class="step">
@@ -42,8 +37,6 @@
           <div class="multi-display">Select behaviours</div>
           <div class="multi-options hidden"></div>
         </div>
-        <button id="next3" class="next-btn">Next</button>
-        <button id="back2" class="back-btn">Back</button>
       </div>
 
       <div id="step4" class="step">
@@ -55,20 +48,33 @@
       <ul id="entriesList"></ul>
     </div>
 
-    <!-- Settings Section -->
     <div id="settingsSection" class="section hidden">
-      <h1>Settings</h1>
-      <p>Settings content goes here.</p>
-    </div>
+  <h2>Settings</h2>
 
-    <!-- Account Section -->
+  <div class="setting-item">
+    <label for="darkModeToggle">Dark Mode</label>
+    <input type="checkbox" id="darkModeToggle" />
+  </div>
+
+  <div class="setting-item">
+    <label for="remindersToggle">Enable Reminders</label>
+    <input type="checkbox" id="remindersToggle" />
+  </div>
+
+  <div id="reminder-time-section" class="setting-item hidden">
+    <label for="reminder-time">Reminder Time</label>
+    <input id="reminder-time" type="time" value="20:00" />
+  </div>
+</div>
+
     <div id="accountSection" class="section hidden">
       <h1>Account</h1>
       <p>Account content goes here.</p>
     </div>
   </div>
 
-  <!-- Bottom NavBar -->
+  </div>
+
   <nav id="bottomNav">
     <button id="journalingNav" class="nav-btn">Journaling</button>
     <button id="settingsNav" class="nav-btn">Settings</button>
