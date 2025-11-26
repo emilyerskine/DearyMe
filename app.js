@@ -19,6 +19,19 @@ const behaviours = ["Busy Workload", "Poor Sleep", "High Screentime", "Caffeine"
 const behaviourSelected = [];
 const behDisplay = document.querySelector("#behavioursMulti .multi-display");
 const behOptions = document.querySelector("#behavioursMulti .multi-options");
+// section selectors
+const journalingSection = document.getElementById("journalingSection");
+const settingsSection = document.getElementById("settingsSection");
+const memorySection = document.getElementById("memorySection");
+// nav buttons
+const journalingNav = document.getElementById("journalingNav");
+const settingsNav = document.getElementById("settingsNav");
+const memsNav = document.getElementById("memsNav");
+// settings stuff
+const darkModeToggle = document.getElementById("darkModeToggle");
+const remindersToggle = document.getElementById("remindersToggle");
+const reminderTimeSection = document.getElementById("reminder-time-section");
+const reminderTimeInput = document.getElementById("reminder-time");
 
 // track mood
 let selectedMood = null;
@@ -119,3 +132,111 @@ function updateBehaviourUI() {
   ? behaviourSelected.join(", ")
   : "Select behaviours";
 }
+
+// Show a specific section
+function showSection(section) {
+  // Hide all sections
+  journalingSection.classList.remove("active");
+  settingsSection.classList.remove("active");
+  memorySection.classList.remove("active");
+
+  // Show the selected section
+  section.classList.add("active");
+}
+
+// Nav button event listeners
+journalingNav.addEventListener("click", () => {
+  showSection(journalingSection);
+  highlightActiveNav(journalingNav);
+});
+
+settingsNav.addEventListener("click", () => {
+  showSection(settingsSection);
+  highlightActiveNav(settingsNav);
+});
+
+memsNav.addEventListener("click", () => {
+  showSection(memorySection);
+  highlightActiveNav(memsNav);
+});
+
+// Highlight active nav button
+function highlightActiveNav(activeButton) {
+  const buttons = [journalingNav, settingsNav, memsNav];
+  buttons.forEach(button => button.classList.remove("selected"));
+  activeButton.classList.add("selected");
+}
+
+// Start with the journaling section
+showSection(journalingSection);
+highlightActiveNav(journalingNav);
+
+//toggle darkmode
+darkModeToggle.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    //dark mode on
+    document.body.classList.add("dark-mode"); 
+  } else {
+    //dark mode off
+    document.body.classList.remove("dark-mode"); 
+  }
+});
+
+// get user permission for notifs
+function askNotifPermission() {
+  if ("Notification" in window && Notification.permission !== "denied") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        console.log("Notification permissions granted");
+      } else {
+        console.log("Notification permissions denied");
+      }
+    });
+  }
+}
+
+// set reminder notification based on user input
+function setReminder(reminderTime) {
+  const reminderDate = new Date();
+  const [hours, minutes] = reminderTime.split(":");
+  //set reminder time
+  reminderDate.setHours(hours, minutes, 0, 0); 
+  // waiting time
+  const delay = reminderDate.getTime() - Date.now(); 
+
+  if (delay > 0) {
+    // actually set reminder
+    setTimeout(() => {
+      showReminderNotif();
+    }, delay);
+  }
+}
+
+// show notifs
+function showReminderNotif() {
+  if (Notification.permission === "granted") {
+    new Notification("It's time to log your mood!");
+  } else {
+    console.error("Notification permission not granted.");
+  }
+}
+
+// toggle reminders
+remindersToggle.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    //ask user permission to send notifs
+    askNotifPermission();
+    reminderTimeSection.classList.remove("hidden"); 
+    subToPush();
+  } else {
+    reminderTimeSection.classList.add("hidden"); 
+  }
+});
+
+// add api for push notifs later 
+reminderTimeInput.addEventListener("change", (e) => {
+  const reminderTime = e.target.value;
+  console.log("Reminder set to:", reminderTime); 
+  setReminder(reminderTime);
+});
+

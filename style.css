@@ -1,62 +1,262 @@
 body {
-  font-family: sans-serif;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background: #efd9ce; 
-}
-
-textarea {
-  width: 100%;
-  height: 150px;
-  margin-bottom: 10px;
-}
-
-button {
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-ul {
-  list-style: none;
+  font-family: 'Roboto';
+  background-color: #efd9ce;
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-li {
-  background: #f0f0f0;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 5px;
+#content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;  
+  font-family: 'Roboto';
+  color: #7161ef;
+}
+
+h2 {
+  font-size: 20px;
+  color: #7161ef;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Roboto';
 }
 
 .moodboard {
   display: flex;
-  gap: 12px;
-  justify-content: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
-.moodboard button { 
-  background: #b79ced; 
-  border-radius: 12px;
-  padding: 12px;
+.moodboard button {
+  font-size: 28px;
+  padding: 15px;
+  background-color: #957fef;
   border: none;
+  border-radius: 50%;
+  color: white;
+}
+
+.moodboard button:hover {
+  background-color: #b79ced;
 }
 
 .moodboard button.selected {
-  background: #957fef;
+  background-color: #8c68e1;
 }
 
-.multi-options div {
-  padding: 8px; 
-  background:#b79ced;
-  margin: 2px;
-  border-radius: 5px;
+textarea {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid #b79ced;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  resize: none;
+  background-color: #efd9ce;
+  font-family: 'Roboto';
 }
 
-.multi-options div:hover {
-  background: #957fef;
+button {
+  padding: 15px 20px;
+  border: none;
+  background-color: #b79ced;
+  color: #efd9ce;
+  font-size: 16px;
+  border-radius: 12px;
+  font-family: 'Roboto';
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  font-family: 'Roboto';
+}
+
+li {
+  background: #efd9ce;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-family: 'Roboto';
+  color: #efd9ce;
+}
+
+#bottomNav {
+  position: fixed;
+  bottom: 0;
+  font-family: 'Roboto';
+  width: 100%;
+  background-color: #957fef;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-top: 2px solid #efd9ce;
+}
+
+.nav-btn {
+  padding: 20px;
+  font-size: 16px;
+  background-color: #b79ced;
+  color: #efd9ce;
+  border: none;
+  border-radius: 12px;
+  width: auto;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.nav-btn.selected {
+  background-color: #dec0f1;
+}
+
+.setting-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto';
+}
+
+.setting-item label {
+  font-size: 16px;
+  margin-right: 10px;
+  font-family: 'Roboto';
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+input[type="time"] {
+  padding: 5px;
+  font-size: 16px;
+  margin-top: 5px;
 }
 
 .hidden {
   display: none;
+}
+
+body.dark-mode, body.dark-mode .setting-item, body.dark-mode #settingsSection {
+  background-color: grey;
+  color: white;
+}
+
+body.dark-mode input[type="checkbox"] {
+  background-color: white;
+  color: black;
+}
+
+body.dark-mode .nav-btn.selected {
+  background-color: grey;
+}
+
+body.dark-mode h1, body.dark-mode h2 {
+  color: black;
+}
+
+body.dark-mode #bottomNav {
+  background-color: black;
+}
+
+body.dark-mode textarea, body.dark-mode button, body.dark-mode .multi-display {
+  background-color: darkgrey;
+  color: white;
+  border-color: grey;
+}
+
+
+body.dark-mode h2, body.dark-mode label {
+  color: white;
+}
+
+.multi {
+  margin-bottom: 20px;
+}
+
+.multi-display {
+  padding: 20px;
+  font-size: 16px;
+  background-color: #b79ced;
+  border: 2px solid #957fef;
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.multi-options {
+  border: 2px solid #957fef;
+  border-radius: 12px;
+  background-color: #b79ced;
+  font-family: 'Roboto';
+}
+
+.multi-display.selected {
+  background-color: #dec0f1;
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    width: auto; 
+    padding: 12px 0; 
+    font-size: 14px;
+  }
+
+  #bottomNav {
+    padding: 10px;
+    flex-direction: row; 
+  }
+
+  #settingsSection {
+    padding: 10px;
+  }
+
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  input[type="time"] {
+    width: 80%;
+  }
+}
+
+#settingsSection {
+  background-color: #efd9ce;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.setting-item label {
+  font-size: 16px;
+  color: #7161ef;
+  margin-right: 10px;
+}
+
+input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #b79ced;
 }

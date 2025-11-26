@@ -8,31 +8,76 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <h1>DearyMe</h1>
+  <div id="content">
+    <div id="journalingSection" class="section active">
+      <h1>DearyMe - Journaling</h1>
+      
+      <div id="step1" class="step">
+        <h2>How are you feeling?</h2>
+        <div id="moodSelector" class="moodboard">
+          <button data-value="Great">😃</button>
+          <button data-value="Good">😊</button>
+          <button data-value="Okay">😐</button>
+          <button data-value="Down">😔</button>
+          <button data-value="Sad">😢</button>
+        </div>
+      </div>
 
-  <div id="moodSelector" class="moodboard">
-    <button data-value="Great">😃</button>
-    <button data-value="Good">😊</button>
-    <button data-value="Okay">😐</button>
-    <button data-value="Down">😔</button>
-    <button data-value="Sad">😢</button>
+      <div id="step2" class="step">
+        <h2>Any symptoms you want to log?</h2>
+        <div class="multi" id="symptomsMulti">
+          <div class="multi-display">Select symptoms</div>
+          <div class="multi-options hidden"></div>
+        </div>
+      </div>
+
+      <div id="step3" class="step">
+        <h2>Any recent behaviours you want to log?</h2>
+        <div class="multi" id="behavioursMulti">
+          <div class="multi-display">Select behaviours</div>
+          <div class="multi-options hidden"></div>
+        </div>
+      </div>
+
+      <div id="step4" class="step">
+        <textarea id="entry" placeholder="Write your thoughts..."></textarea>
+        <button id="saveBtn" class="save-btn">Save Entry</button>
+      </div>
+    </div>
+
+    <div id="settingsSection" class="section hidden">
+  <h2>Settings</h2>
+
+  <div class="setting-item">
+    <label for="darkModeToggle">Dark Mode</label>
+    <input type="checkbox" id="darkModeToggle" />
   </div>
 
-  <div class="multi" id="symptomsMulti">
-    <div class="multi-display">Select symptoms</div>
-    <div class="multi-options hidden"></div>
+  <div class="setting-item">
+    <label for="remindersToggle">Enable Reminders</label>
+    <input type="checkbox" id="remindersToggle" />
   </div>
 
-  <div class="multi" id="behavioursMulti">
-    <div class="multi-display">Select behaviours</div>
-    <div class="multi-options hidden"></div>
+  <div id="reminder-time-section" class="setting-item hidden">
+    <label for="reminder-time">Reminder Time</label>
+    <input id="reminder-time" type="time" value="20:00" />
+  </div>
+</div>
+
+    <div id="memorySection" class="section hidden">
+      <h1>Memories</h1>
+      <h2>My Previous Entries</h2>
+      <ul id="entriesList"></ul>
+    </div>
   </div>
 
-  <textarea id="entry" placeholder="Write your thoughts..."></textarea>
-  <button id="saveBtn">Save Entry</button>
+  </div>
 
-  <h2>Previous Entries</h2>
-  <ul id="entriesList"></ul>
+  <nav id="bottomNav">
+    <button id="journalingNav" class="nav-btn">Journaling</button>
+    <button id="settingsNav" class="nav-btn">Settings</button>
+    <button id="memsNav" class="nav-btn">Memories</button>
+  </nav>
 
   <script src="app.js"></script>
 </body>
