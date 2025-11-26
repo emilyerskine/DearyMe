@@ -182,10 +182,52 @@ darkModeToggle.addEventListener("change", (e) => {
   }
 });
 
+// get user permission for notifs
+function askNotifPermission() {
+  if ("Notification" in window && Notification.permission !== "denied") {
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted") {
+        console.log("Notification permissions granted");
+      } else {
+        console.log("Notification permissions denied");
+      }
+    });
+  }
+}
+
+// set reminder notification based on user input
+function setReminder(reminderTime) {
+  const reminderDate = new Date();
+  const [hours, minutes] = reminderTime.split(":");
+  //set reminder time
+  reminderDate.setHours(hours, minutes, 0, 0); 
+  // waiting time
+  const delay = reminderDate.getTime() - Date.now(); 
+
+  if (delay > 0) {
+    // actually set reminder
+    setTimeout(() => {
+      showReminderNotif();
+    }, delay);
+  }
+}
+
+// show notifs
+function showReminderNotif() {
+  if (Notification.permission === "granted") {
+    new Notification("It's time to log your mood!");
+  } else {
+    console.error("Notification permission not granted.");
+  }
+}
+
 // toggle reminders
 remindersToggle.addEventListener("change", (e) => {
   if (e.target.checked) {
+    //ask user permission to send notifs
+    askNotifPermission();
     reminderTimeSection.classList.remove("hidden"); 
+    subToPush();
   } else {
     reminderTimeSection.classList.add("hidden"); 
   }
@@ -195,4 +237,6 @@ remindersToggle.addEventListener("change", (e) => {
 reminderTimeInput.addEventListener("change", (e) => {
   const reminderTime = e.target.value;
   console.log("Reminder set to:", reminderTime); 
+  setReminder(reminderTime);
 });
+
