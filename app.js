@@ -19,6 +19,15 @@ const behaviours = ["Busy Workload", "Poor Sleep", "High Screentime", "Caffeine"
 const behaviourSelected = [];
 const behDisplay = document.querySelector("#behavioursMulti .multi-display");
 const behOptions = document.querySelector("#behavioursMulti .multi-options");
+// Section selectors
+const journalingSection = document.getElementById("journalingSection");
+const settingsSection = document.getElementById("settingsSection");
+const accountSection = document.getElementById("accountSection");
+// Nav buttons
+const journalingNav = document.getElementById("journalingNav");
+const settingsNav = document.getElementById("settingsNav");
+const accountNav = document.getElementById("accountNav");
+
 
 // make step by step
 let currentStep = 1;
@@ -167,3 +176,41 @@ document.getElementById("next3").addEventListener("click", () => {
     alert("Please select atleast one behaviour")
   }
 });
+
+// Show a specific section
+function showSection(section) {
+  // Hide all sections
+  journalingSection.classList.remove("active");
+  settingsSection.classList.remove("active");
+  accountSection.classList.remove("active");
+
+  // Show the selected section
+  section.classList.add("active");
+}
+
+// Nav button event listeners
+journalingNav.addEventListener("click", () => {
+  showSection(journalingSection);
+  highlightActiveNav(journalingNav);
+});
+
+settingsNav.addEventListener("click", () => {
+  showSection(settingsSection);
+  highlightActiveNav(settingsNav);
+});
+
+accountNav.addEventListener("click", () => {
+  showSection(accountSection);
+  highlightActiveNav(accountNav);
+});
+
+// Highlight active nav button
+function highlightActiveNav(activeButton) {
+  const buttons = [journalingNav, settingsNav, accountNav];
+  buttons.forEach(button => button.classList.remove("selected"));
+  activeButton.classList.add("selected");
+}
+
+// Start with the journaling section
+showSection(journalingSection);
+highlightActiveNav(journalingNav);
